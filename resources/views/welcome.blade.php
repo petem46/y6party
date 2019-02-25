@@ -137,7 +137,7 @@ $endtime = date('g:i A', strtotime($settings['endtime']));
 </section>
 
     <!-- Testimonials -->
-    <section class="testimonials text-center bg-light">
+    <section class="testimonials text-center bg-light pb-5">
       <div class="container">
         <h2 class="mb-5">What people are saying...</h2>
         <div class="row">
@@ -170,7 +170,7 @@ $endtime = date('g:i A', strtotime($settings['endtime']));
       @guest
       <p class="lead text-center">Please <a class="font-weight-bold" href="{{ route('login') }}">login</a> to see the map.</p>
       @else
-  <div class="vh-75 d-flex map-container" id="map">
+  <div class="vh-75 d-flex map-container pb-3" id="map">
     <iframe src="{{$settings['venuemapurl']}} " width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
   </div>
   @endguest

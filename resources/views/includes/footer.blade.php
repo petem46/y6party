@@ -1,4 +1,4 @@
-<section id="footer">
+<section id="footer" class="d-none d-md-block">
     <div class="small bg-dark text-muted text-right my-auto py-4">
         {{-- <img style="height: 3rem;"  class="" src="img/monkey-icon.png" alt=""> --}}
         Pete - 2018 &nbsp;&nbsp;
@@ -8,3 +8,4 @@
         @endguest
     </div>
 </section>
+<div class="d-md-none py-4"></div>

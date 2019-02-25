@@ -1,0 +1,24 @@
+@import "mixins/utilities";
+@import "mixins/breakpoints";
+@import "mixins/animations";
+@import "mixins/type";
+@import "mixins/layout";
+@import "mixins/drawer";
+@import "mixins/forms";
+@import "mixins/buttons";
+@import "mixins/hover";
+@import "mixins/navs";
+
+// Mixins
+// Background Cover Mixin
+@mixin background-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+// Font Mixins
+@mixin body-font {
+  font-family: 'Roboto','Montserrat', 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

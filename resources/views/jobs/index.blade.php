@@ -182,10 +182,10 @@ $datatoggle = 0;
                             {{-- <a class="dropdown-item" href="#job{{$job->id}}"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete</a> --}}
                           </div>
                         </div>
-                        {{-- </div> --}}
+                        </div>
                         @endif
                       </div>
-                    </div>
+                    {{-- </div> --}}
                   <br>
                   @endforeach
                   @endif

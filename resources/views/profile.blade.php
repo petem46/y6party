@@ -357,9 +357,9 @@
                 <div class="row">
                 </div>
               </div>
+              @endforeach
             </div>
           </div>
-          @endforeach
         </div>
         {{-- <p class="text-dark">You can add <strong>five</strong> tracks to the playlist.</p> --}}
         @php if ($mysongcount[0]['songs_count'] == 1) {$addedtracks = 'track';} else {$addedtracks = 'tracks';} @endphp

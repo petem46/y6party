@@ -175,7 +175,7 @@
               </div>
               {{-- <a href="#job{{$job->id}}" class="btn btn-block text-center card-header-job_plus m-auto" data-toggle="collapse"><i class="fas fa-plus"></i></a> --}}
             </div>
-            <div id="job{{$job->id}}" class="card-body collapse show">
+            <div id="job{{$job->id}}" class="card-body collapse">
               <div class="card-text">
                 <h6 class="card-subtitle mb-2 text-dark">Details</h6>
                 <div class="card-text">{{$job->details}}&nbsp;</div>

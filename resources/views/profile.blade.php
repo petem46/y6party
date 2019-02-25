@@ -307,16 +307,16 @@
           
       <div class="row">
         @php $i = 0; @endphp
-        @foreach ($songs as $song)
-        @php
-          $i++;
-          $voted = 0;
-        @endphp
         <div class="col-lg-12 mb-3">
           <div class="card card-default">
             <div class="card-header bg-light py-3">
               <h3>My Tracks</h3>
             </div>
+        @foreach ($songs as $song)
+        @php
+          $i++;
+          $voted = 0;
+        @endphp
         
             <div class="card-header card-header-job">
                 <div class="flex-1">

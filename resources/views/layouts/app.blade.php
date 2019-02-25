@@ -32,7 +32,8 @@
   <div id="app">
     {{-- @include('includes.nav') --}}
     @yield('content')
-  @include('navs.bottomnav')
+    @include('includes.footer')
+    @include('navs.bottomnav')
   </div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

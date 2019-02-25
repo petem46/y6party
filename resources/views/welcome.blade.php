@@ -176,5 +176,5 @@ $endtime = date('g:i A', strtotime($settings['endtime']));
   @endguest
 </section>
 {{-- @endguest --}}
-@include('includes.footer')
+{{-- @include('includes.footer') --}}
 @endsection

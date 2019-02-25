@@ -28,17 +28,14 @@ class SongsController extends Controller
       $mykid = KidUser::where('user_id', Auth::id())->first();
       $mykid = $mykid->kid_id;
     }
-    // $mykid = KidUser::where('user_id', Auth::id())->first();
     $data = [
-      // 'mykid'       =>  KidUser::where('user_id', Auth::id())->first(),
       'mysongcount' =>  Kid::select('id')->withCount('songs')->where('id', $mykid)->get(),
-      // 'mysongcount' =>  KidUser::get(),
       'songs'       =>  Song::with('kid')->withCount('votes')->orderBy('votes_count', 'desc')->orderBy('created_at')->get(),
       'songcount'   =>  Song::get()->count(),
       'artistcount' =>  Song::select('artist')->groupBy('artist')->get()->count(),
       'votecount'   =>  Vote::get()->count(),
-      'kid'         =>  Auth::user()->kids()->first(),
-      'mygroupid'   =>  User::select('usergroup_id')->where('id', Auth::id())->get(),
+      'mygroupid'   =>  Auth::user()->usergroup_id,
+      'kid'         =>  $mykid,
     ];
     
     return view('songs.index', $data);
@@ -114,13 +111,20 @@ class SongsController extends Controller
     
     public function update($id)
     {
-      $kid = Auth::user()->kids()->first();
+      if(Auth::user()->usergroup_id == 3) {
+        $kid = Kid::where('id', Auth::id())->first();
+        $kid = $kid['id'];
+      }
+      else {
+        $kid = Auth::user()->kids()->first();
+        $kid = $kid->id;
+      }
       try 
       {
         DB::table('votes')->insert([
           'song_id' => $id,
-          'kid_id' => $kid->id,
-          'songkid' => $id . '-' . $kid->id,
+          'kid_id' => $kid,
+          'songkid' => $id . '-' . $kid,
           ]);
         }
         catch(\Illuminate\Database\QueryException $e) 
@@ -149,9 +153,12 @@ class SongsController extends Controller
       * @param  \App\Songs  $songs
       * @return \Illuminate\Http\Response
       */
-      public function destroy(Songs $songs)
+      public function destroy($id)
       {
-        //
+        DB::table('songs')->where('id', $id)->delete();
+        DB::table('votes')->where('song_id', $id)->delete();
+
+        return Redirect::to(URL::previous())->with('messageSongDeleted', 'Your song choice has been deleted! All votes for this song have also been deleted!');
       }
     }
     

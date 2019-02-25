@@ -35,6 +35,13 @@
   });
 </script>
 @endif
+@if (session('messageSongDeleted'))
+<script>
+  $(function() {
+    $.snackbar({content: "{{session('messageSongDeleted')}}",style: "bg-success", timeout: 3000});
+  });
+</script>
+@endif
 <header class="masthead masthead-myprofile text-center">
   <div class="overlay"></div>
   <div class="container">
@@ -312,52 +319,60 @@
             </div>
         
             <div class="card-header card-header-job">
-              <div class="flex-1">
-                <div class="text-muted"><small>Added by {{$song->kid->kidname}} - {{ $song->created_at->diffForHumans() }}</small></div>
-                <div><h5>{{$i}}. {{$song->artist}} - {{$song->songname}}</h5></div>
-              </div>
-              @foreach ($song->votes as $vote)
-                @if ($vote->kid_id == $kid->id)
-                @php $voted = 'text-success'; @endphp
-                @endif
-              @endforeach
-              <div class="col-2 p-0">
+                <div class="flex-1">
+                  <div class="text-muted"><small>Added by {{$song->kid->kidname}} - {{ $song->created_at->diffForHumans() }}</small></div>
+                  <div><h5>{{$i}}. {{$song->artist}} - {{$song->songname}}</h5></div>
+                </div>
+                @foreach ($song->votes as $vote)
+                  @if ($vote->kid_id == $kid)
+                  @php $voted = 'text-success'; @endphp
+                  @endif
+                @endforeach
+                <div class="col-2 p-0">
+                  <form class="p-0 m-0" action="{{url('songs', [$song->id])}}" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+                    {{ csrf_field() }}
+                  <button type="submit" class="btn btn-block text-default px-0 py-3 m-0 {{$voted}}">
+                      <span class="d-md-none"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;{{count($song->votes)}}</span>
+                      <span class="d-none d-md-block"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;{{count($song->votes)}} votes</span>
+                    </button>
+                  </form>
+                </div>
+                <div class="col-1 p-0">
+                @if ($song->kid_id == $kid)
                 <form class="p-0 m-0" action="{{url('songs', [$song->id])}}" method="POST">
-                  <input type="hidden" name="_method" value="PUT">
-                  {{ csrf_field() }}
-                <button type="submit" class="btn btn-block text-default px-0 py-3 m-0 {{$voted}}">
-                    <span class="d-md-none"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;{{count($song->votes)}}</span>
-                    <span class="d-none d-md-block"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;{{count($song->votes)}} votes</span>
-                  </button>
-                </form>
-              </div>
-              <div class="col-2 p-0 hidden">
-                <a href="#song{{$song->id}}" style="-pointer-events: none;" class="btn btn-block text-danger px-0 py-3 m-0">
-                  <span class="d-md-block"><i class="fas fa-trash fa-lg"></i>&nbsp;&nbsp;</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-footer bg-white text-center py-0 hidden">
-              <div class="row">
+                    <input type="hidden" name="_method" value="DELETE">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-block text-danger px-0 py-3 m-0">
+                      <span class=""><i class="fas fa-trash-alt fa-lg"></i></span>
+                    </button>
+                  </form>  
+                  {{-- <a href="#song{{$song->id}}" style="-pointer-events: none;" class="btn btn-block text-danger px-0 py-3 m-0">
+                      <span class="d-md-block"><i class="fas fa-trash fa-lg"></i>&nbsp;&nbsp;</span>
+                    </a> --}}
+                    @endif
+                  </div>
+                </div>
+              <div class="card-footer bg-white text-center py-0 hidden">
+                <div class="row">
+                </div>
               </div>
             </div>
           </div>
+          @endforeach
         </div>
-        @endforeach
-      </div>
-      {{-- <p class="text-dark">You can add <strong>five</strong> tracks to the playlist.</p> --}}
-      @if ($mysongcount[0]['songs_count'] >= 5)
-      <p class="text-danger"><strong>You have added {{$mysongcount[0]['songs_count']}} tracks to the playlist.</strong></p>
-      @else
-      <p class="text-dark">You have added {{0 + $mysongcount[0]['songs_count']}} tracks to the playlist.</p>
-      <p class="text-info"><strong>You can {{5 - $mysongcount[0]['songs_count']}} more tracks to the playlist.</strong></p>
-      <p><a href="{{URL::to('/')}}/songs/create" class="btn btn-success btn-outline"><i class="fas fa-plus"></i> Add Song</a></p>
-      @endif
-
-
-
-
-
+        {{-- <p class="text-dark">You can add <strong>five</strong> tracks to the playlist.</p> --}}
+        @php if ($mysongcount[0]['songs_count'] == 1) {$addedtracks = 'track';} else {$addedtracks = 'tracks';} @endphp
+        @php if ($mysongcount[0]['songs_count'] == 4) {$moretracks = 'track';} else {$moretracks = 'tracks';} @endphp
+        @if ($mysongcount[0]['songs_count'] >= 5)
+        <p class="text-danger"><strong>You have added {{$mysongcount[0]['songs_count']}} {{$addedtracks}} to the playlist.</strong></p>
+        <p class="text-dark">You have <strong>unlimited</strong> votes (one per track).</p>
+        @else
+        <p class="text-dark">You have added {{0 + $mysongcount[0]['songs_count']}} {{$addedtracks}} to the playlist.</p>
+        <p class="text-info"><strong>You can add {{5 - $mysongcount[0]['songs_count']}} more {{$moretracks}} to the playlist.</strong></p>
+        <p class="text-dark">You have <strong>unlimited</strong> votes (one per track).</p>
+        <p><a href="{{URL::to('/')}}/songs/create" class="btn btn-success btn-outline"><i class="fas fa-plus"></i> Add Song</a></p>
+        @endif
       @endif
   </main>
 </div>

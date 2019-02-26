@@ -238,10 +238,10 @@
                           {{-- <a class="dropdown-item" href="#job{{$job->id}}"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete</a> --}}
                         </div>
                       </div>
-                      {{-- </div> --}}
+                      </div>
                       @endif
                     </div>
-                  </div>
+                  {{-- </div> --}}
                 <br>
                 @endforeach
                 @endif
@@ -307,16 +307,16 @@
           
       <div class="row">
         @php $i = 0; @endphp
-        <div class="col-lg-12 mb-3">
-          <div class="card card-default">
-            <div class="card-header bg-light py-3">
-              <h3>My Tracks</h3>
-            </div>
         @foreach ($songs as $song)
         @php
           $i++;
           $voted = 0;
         @endphp
+        <div class="col-lg-12 mb-3">
+          <div class="card card-default">
+            <div class="card-header bg-light py-3">
+              <h3>My Tracks</h3>
+            </div>
         
             <div class="card-header card-header-job">
                 <div class="flex-1">
@@ -357,9 +357,9 @@
                 <div class="row">
                 </div>
               </div>
-              @endforeach
             </div>
           </div>
+          @endforeach
         </div>
         {{-- <p class="text-dark">You can add <strong>five</strong> tracks to the playlist.</p> --}}
         @php if ($mysongcount[0]['songs_count'] == 1) {$addedtracks = 'track';} else {$addedtracks = 'tracks';} @endphp

@@ -119,7 +119,26 @@ class JobsController extends Controller
 
     public function edit($id)
     {
+        $types = Jobtype::all();
         $job = Job::find($id);
+        return view('jobs.edit', compact('job', 'id', 'types'));
+    }
+
+    public function updatejob(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name'      =>  'required',
+            'jobtype_id'     =>  'required',
+            'details'     =>  'required',
+            'users_required'       =>  'required',
+        ]);
+        $job = Job::find($id);
+        $job->name = $request->get('name');
+        $job->jobtype_id = $request->get('jobtype_id');
+        $job->details = $request->get('details');
+        $job->users_required = $request->get('users_required');
+        $job->save();
+        return redirect('/iamjob#j' . $id)->with('succes','Job Updated');
     }
 
     public function update($id)

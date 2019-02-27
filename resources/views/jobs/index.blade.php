@@ -199,22 +199,29 @@ $datatoggle = 0;
                     </div>
                   </form>
                   <!-- JOB COMMENTS SECTION END -->
-                </div>  
-              </div>
+                </div> 
+              </div> 
               <div class="card-footer bg-white text-center py-0">
                 <div class="row">
                   {{-- <div class="col-3 p-0">
                     <a href="#job{{$job->id}}" class="btn btn-block text-default px-0 py-3 m-0" data-toggle="collapse">Details</a>
                   </div> --}}
-                  <div class="col-4 p-0">
+                  <div class="col-3 p-0">
+                      <a class="btn btn-block text-default px-0 py-3 m-0" href="{{action('JobsController@edit', $job->id)}}" role="button">
+                          <span class="d-md-none"><i class="fas fa-edit"></i></span>
+                        <span class="d-none d-md-block"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit Job</span>
+                      </a>    
+                    </a>
+                  </div>
+                <div class="col-3 p-0">
                     <a href="#job{{$job->id}}" style="-pointer-events: none;" class="btn btn-block text-default px-0 py-3 m-0" data-toggle="collapse">
                       <span class="d-md-block"><i class="fas fa-comment"></i>&nbsp;&nbsp;{{count($job->comments)}}</span>
                     </a>
                   </div>
-                  <div class="col-4 p-0">
+                  <div class="col-3 p-0">
                     <a href="#job{{$job->id}}" style="pointer-events: none;" class="btn btn-block text-default px-0 py-3 m-0 {{$text_colour}}" data-toggle="collapse"><i class="fas fa-users"></i>  {{count($job->users)}}/{{ $job->users_required }}</a>
                   </div>
-                  <div class="col-4 p-0">
+                  <div class="col-3 p-0">
                     @if ($signedup == 1)
                     <form class="p-0 m-0" action="{{url('jobs', [$job->id])}}" method="POST">
                       <input type="hidden" name="_method" value="DELETE">

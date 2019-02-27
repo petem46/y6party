@@ -18,15 +18,16 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
     Route::resource('settings', 'SettingsController');    
-});
-
-Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function()
-{
     Route::get('/iamjob', 'JobsController@index')->name('iamjob'); 
     Route::get('/addjob', 'JobsController@create')->name('addjob');
     Route::post('/jobs/{job}/comments', 'CommentsController@store');
     Route::resource('jobs', 'JobsController');    
+    Route::post('/jobs/{job}/updatejob', 'JobsController@updatejob');
     Route::resource('comments', 'CommentsController');    
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function()
+{
 });
 
 // Protected Routes

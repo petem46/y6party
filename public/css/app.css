@@ -30836,6 +30836,10 @@ footer.footer {
   word-wrap: break-word;
 }
 
+.lh-3 {
+  line-height: 1.5rem !important;
+}
+
 .font-handlee {
   font-family: "Handlee", cursive;
 }

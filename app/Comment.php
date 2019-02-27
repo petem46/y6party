@@ -12,12 +12,14 @@ class Comment extends Model
         'comment', 'job_id', 'user_id'
     ];
 
+    protected $touches = ['jobs'];
+
     public function author() {
         return $this->belongsTo(User::class,'user_id');
     }
 
     public function jobs() {
-        return $this->hasOne('App\Job');
+        return $this->belongsTo('App\Job');
     }
 
 }

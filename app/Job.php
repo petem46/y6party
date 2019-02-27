@@ -29,5 +29,6 @@ class Job extends Model
             'job_id' => $this->id,
             'user_id' => Auth::id(),
         ]);
+        Job::where('id', $this->id)->update(array('updated_at' => now()));
     }
 }

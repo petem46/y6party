@@ -25,6 +25,7 @@ class JobsController extends Controller
                             ->with('jobtype')
                             ->with('comments')
                             ->where('completed', 0)
+                            ->orderBy('updated_at', 'desc')
                             ->orderBy('jobtype_id')
                             ->orderBy('name')
                             ->get(),

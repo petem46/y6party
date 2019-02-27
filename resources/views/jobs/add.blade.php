@@ -41,7 +41,7 @@
       <div class="form-group">
         <label for="job-users_required" class="bmd-label-floating">How many people needed?</label>
         {{-- <input type="text" name="users_required" id="job-users_required" class="form-control" placeholder="Enter number of helper needed for this job"> --}}
-        <input type="number" name="users_required" id="job-users_required" class="form-control" min="1" max="5">
+        <input type="number" name="users_required" id="job-users_required" class="form-control" min="1" max="25" value="3">
         <span class="bmd-help">Enter the ideal number of volunteers needed for this job/task.</span>
     </div> 
     <div class="form-group mt-4 ms-0">

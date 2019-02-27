@@ -5,6 +5,7 @@ namespace App;
 use App\Kid;
 use App\Job;
 use App\Comment;
+use App\Announcement;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -40,5 +41,8 @@ class User extends Authenticatable
     }
     public function comments() {
         return $this->hasMany('App\Comment');
+    }
+    public function annoucements() {
+        return $this->hasMany('App\Announcement');
     }
 }

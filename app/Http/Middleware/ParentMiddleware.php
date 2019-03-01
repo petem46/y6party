@@ -15,7 +15,7 @@ class ParentMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->usergroup_id > 2)
+        if ($request->user()->usergroup_id == 3)
         {
         // return new Response(view('unauthorized')->with('role', 'Parents'));
         return redirect(route('home'));

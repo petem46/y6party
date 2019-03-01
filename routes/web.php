@@ -28,6 +28,12 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
 Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function()
 {
+    Route::get('/iamjob', 'JobsController@index')->name('iamjob'); 
+    Route::get('/addjob', 'JobsController@create')->name('addjob');
+    Route::post('/jobs/{job}/comments', 'CommentsController@store');
+    Route::resource('jobs', 'JobsController');    
+    Route::post('/jobs/{job}/updatejob', 'JobsController@updatejob');
+    Route::resource('comments', 'CommentsController');    
 });
 
 // Protected Routes

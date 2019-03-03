@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <h1 class="mb-5">Jobs.Create</h1>
+        <h1 class="mb-5">Add a new job</h1>
       </div>
     </div>
   </div>

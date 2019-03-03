@@ -34,6 +34,10 @@ Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function(
     Route::resource('jobs', 'JobsController');    
     Route::post('/jobs/{job}/updatejob', 'JobsController@updatejob');
     Route::resource('comments', 'CommentsController');    
+    Route::get('/profile', 'ProfileController@show')->name('profile'); 
+    Route::get('/playlist', 'SongsController@index')->name('playlist'); 
+    Route::get('/party', 'HomeController@index')->name('party');
+
 });
 
 // Protected Routes
@@ -54,6 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/addsong', 'SongsController@create')->name('addsong');
     // Resource Routes...
     Route::resource('songs', 'SongsController');
+    // Route::get('/iamjob', 'JobsController@index')->name('iamjob'); 
+
 });
     
 // Home Routes

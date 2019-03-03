@@ -6,7 +6,8 @@
     @if (Route::currentRouteName() === NULL) &nbsp;&nbsp;The Party 
     @elseif (Route::currentRouteName() === 'profile') &nbsp;&nbsp; My {{Route::currentRouteName()}}
     @elseif (Route::currentRouteName() === 'iamjob') &nbsp;&nbsp; The Job List
-    @else &nbsp;&nbsp;The {{Route::currentRouteName()}}
+    {{-- @else &nbsp;&nbsp;The {{Route::currentRouteName()}} --}}
+    @else &nbsp;&nbsp;The Party
     @endif
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
       <span class="navbar-toggler-icon"></span>

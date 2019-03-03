@@ -10,7 +10,7 @@ $endtime = date('g:i A', strtotime($settings['endtime']));
 <header class="masthead text-uppercase text-white text-center vh-100">
 @else
 @include('navs.main')
-<header class="masthead text-uppercase text-white text-center vh-100">
+<header class="masthead text-uppercase text-white text-center vh-50">
 @endguest
   <div class="overlay"></div>
   <div class="container">
@@ -33,7 +33,7 @@ $endtime = date('g:i A', strtotime($settings['endtime']));
 
 {{-- @else --}}
 <!-- Icons Grid -->
-<section class="features-icons bg-light text-center">
+<section class="features-icons bg-light text-center p-3">
   <div class="container">
     <div class="row">
       <div class="col-lg-4">

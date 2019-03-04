@@ -71,10 +71,10 @@
     </div>
         <div class="row mx-0">
           <button type="button" onclick="goBack()" class="col-6 btn btn-danger text-left">
-            <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Return to search form    
+            <i class="fas fa-search"></i>&nbsp;&nbsp;Search again    
           </button>    
-          <button type="button" onclick="{{route('playlist')}}" class="col-6 btn btn-danger text-right">
-            <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Return to the playlist    
+          <button type="button" onclick="{{route('playlist')}}" class="col-6 btn btn-info text-right">
+              <i class="fas fa-music"></i>&nbsp;&nbsp;The Playlist    
           </button>    
         </div>
   </div>

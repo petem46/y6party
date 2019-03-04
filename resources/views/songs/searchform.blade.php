@@ -35,10 +35,10 @@
       <div class="form-group mt-4 ms-0">
         <div class="row mx-0">
           <button type="button" onclick="goBack()" class="col-6 btn btn-danger text-left">
-            <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Cancel    
+            <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;The Playlist    
           </button>    
           <button type="submit" class="col-6 btn btn-success text-right">
-            <i class="fas fa-plus"></i>&nbsp;&nbsp;Search Song    
+              <i class="fas fa-search"></i>&nbsp;&nbsp;Search Song    
           </button>    
         </div>
         

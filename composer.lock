@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25297d4bb47dbdd74a1cf644b14be166",
+    "content-hash": "086e82400e690c5b73b31c1dc8ef591e",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -1255,7 +1255,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",

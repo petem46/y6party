@@ -18,6 +18,17 @@
         </div>
     </div>
 </header>
+{{-- <div>
+    @foreach ($response1->results as $item)
+        <div class="card">
+            <h5>{{$item->artistName}} - {{$item->trackName}}</h5>
+            <audio controls controlsList="nodownload">
+                    <source src="{{$item->previewUrl}}" type="audio/mp4">
+                  Your browser does not support the audio element.
+            </audio>
+        </div>
+    @endforeach
+</div> --}}
 <section id="addsong" class="mb-5 mt-3">
     <div class="container">
     {{-- @include('common.errors') --}}

@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 class SongsController extends Controller
 {
   public function index()
@@ -41,9 +43,29 @@ class SongsController extends Controller
     return view('songs.index', $data);
   }
   
+  public function songsearch($search)
+  {
+
+    $client = new Client(); //GuzzleHttp\Client
+    $result = $client->request('GET', 'https://itunes.apple.com/search', [
+      'query' => [
+        'term' => $search,
+        'country' => 'GB',
+        'media' => 'music',
+        'limit' => '5',
+        'explicit' => 'No', 
+      ],
+      // 'debug' => true,
+    ]);    
+    $response = $result->getBody()->getContents();
+    $response = json_decode($response);
+
+    return view('songs.search', compact('response', 'response'));
+    
+  }
+
   public function create()
   {
-    // dd(Auth::user()->usergroup_id);
     if(Auth::user()->usergroup_id == 3) {
       $data = [
         'kids' => Kid::where('id', Auth::id())->get(),
@@ -54,7 +76,7 @@ class SongsController extends Controller
         'kids' => Auth::user()->kids()->with('songs')->get(),
       ];
     }
-    return view('songs.add', $data);
+    return view('songs.add', $data, compact('response', 'response1'));
   }
   
   public function store(Request $request)

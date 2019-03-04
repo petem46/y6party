@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/addsong', 'SongsController@create')->name('addsong');
     // Resource Routes...
     Route::resource('songs', 'SongsController');
+    Route::get('/songs/search/{search}', 'SongsController@songsearch');
     // Route::get('/iamjob', 'JobsController@index')->name('iamjob'); 
 
 });

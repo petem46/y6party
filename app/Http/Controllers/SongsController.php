@@ -20,8 +20,6 @@ class SongsController extends Controller
 {
   public function index()
   {
-
-    
     if(Auth::user()->usergroup_id == 3) {
       $mykid = Kid::where('id', Auth::id())->first();
       $mykid = $mykid['id'];
@@ -43,16 +41,21 @@ class SongsController extends Controller
     return view('songs.index', $data);
   }
   
-  public function songsearch($search)
+  public function search()
   {
-
+    return view('songs.searchform');
+  }
+  
+  public function songsearch(Request $request)
+  {
+    // return $request->all();
     $client = new Client(); //GuzzleHttp\Client
     $result = $client->request('GET', 'https://itunes.apple.com/search', [
       'query' => [
-        'term' => $search,
+        'term' => $request->artist . ' ' . $request->track,
         'country' => 'GB',
         'media' => 'music',
-        'limit' => '5',
+        'limit' => '6',
         'explicit' => 'No', 
       ],
       // 'debug' => true,
@@ -60,7 +63,18 @@ class SongsController extends Controller
     $response = $result->getBody()->getContents();
     $response = json_decode($response);
 
-    return view('songs.search', compact('response', 'response'));
+    if(Auth::user()->usergroup_id == 3) {
+      $data = [
+        'kids' => Kid::where('id', Auth::id())->get(),
+      ];
+    }
+    else {
+      $data = [
+        'kids' => Auth::user()->kids()->with('songs')->get(),
+      ];
+    }
+
+    return view('songs.searchresults', $data, compact('response', 'response'));
     
   }
 

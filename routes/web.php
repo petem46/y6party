@@ -40,26 +40,21 @@ Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function(
 
 });
 
-// Protected Routes
 Route::group(['middleware' => 'auth'], function () {
-    // Registration Routes...
+
     Route::get('auth/register', 'Auth\AuthController@getRegister');
     Route::post('auth/register', 'Auth\AuthController@postRegister');
     
-    // Named routes...
-    // Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/profile', 'ProfileController@show')->name('profile'); 
     Route::get('/playlist', 'SongsController@index')->name('playlist'); 
     Route::get('/party', 'HomeController@index')->name('party');
-    // Route::get('/theplaylist', 'SongsController@index')->name('theplaylist'); 
-    // Route::get('/thejobs', 'JobsController@index')->name('thejobs'); 
-    // Route::get('/theparty', 'JobsController@index')->name('theparty'); 
-    // Add new routes
+    Route::post('/songsearch', 'SongsController@songsearch')->name('songsearch');
+
     Route::get('/addsong', 'SongsController@create')->name('addsong');
-    // Resource Routes...
-    Route::resource('songs', 'SongsController');
+    Route::get('/songs/search', 'SongsController@search');
     Route::get('/songs/search/{search}', 'SongsController@songsearch');
-    // Route::get('/iamjob', 'JobsController@index')->name('iamjob'); 
+    
+    Route::resource('songs', 'SongsController');
 
 });
     

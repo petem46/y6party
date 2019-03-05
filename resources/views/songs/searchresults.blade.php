@@ -50,6 +50,14 @@
                 <label for="song-name">Song</label>
                 <input type="text" name="songname" id="song-name" class="form-control" placeholder="{{$item->trackName}}" value="{{$item->trackName}}">
               </div> 
+              <div class="form-group hidden">
+                <label for="song-artworkUrl">Artwork URL</label>
+                <input type="text" name="artworkUrl" id="song-name" class="form-control" placeholder="{{$item->artworkUrl100}}" value="{{$item->artworkUrl100}}">
+              </div> 
+              <div class="form-group hidden">
+                <label for="song-previewUrl">Preview URL</label>
+                <input type="text" name="previewUrl" id="song-previewUrl" class="form-control" placeholder="{{$item->previewUrl}}" value="{{$item->previewUrl}}">
+              </div> 
               <div class="form-group">
                 <label for="song-kid">Requested By</label>
                 {{-- <input type="text" name="kid_id" id="song-kid" class="form-control" placeholder="Requested by"> --}}

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    protected $fillable = ['artist', 'songname', 'kid_id', 'artist_track'];
+    protected $fillable = ['artist', 'songname', 'kid_id', 'artist_track', 'previewUrl', 'artworkUrl'];
 
     public function kid() {
         return $this->belongsTo('App\Kid');

@@ -83,65 +83,79 @@
     </div>
   </div>
 </section>
-  <div class="container">
+<div class="container">
   <main class="pb-0">
     <div class="pt-3">
-      <div class="row">
-        @php $i = 0; @endphp
-        @foreach ($songs as $song)
-        @php
-          $i++;
-          $voted = 0;
-        @endphp
-        
-        <div class="col-lg-12 mb-3" id="song{{$song->id}}">
-          <div class="card card-default">
-            <div class="card-header card-header-job">
-              <div class="flex-1">
+      @php $i = 0; @endphp
+      @foreach ($songs as $song)
+      @php
+      $i++;
+      $voted = 0;
+      @endphp
+      <div class="row mb-3">
+        <div class="col-md-12" id="song{{$song->id}}">
+          <div class="card p-3">
+            <div class="row">
+              <div class="col-12 col-md-8">
                 <div class="text-muted"><small>Added by {{$song->kid->kidname}} - {{ $song->created_at->diffForHumans() }}</small></div>
-                <div><h5>{{$i}}. {{$song->artist}} - {{$song->songname}}</h5></div>
+                <div><h6>{{$i}}. {{$song->artist}} - {{$song->songname}}</h6></div>
               </div>
+              <div class="col-1 col-md-4">
+                @if ($song->kid_id == $kid)
+                <form class="p-0 m-0" action="{{url('songs', [$song->id])}}" method="POST">
+                  <input type="hidden" name="_method" value="DELETE">
+                  {{ csrf_field() }}
+                  <button type="submit" class="btn btn-block text-danger px-0 py-3 m-0">
+                    <span class="d-none d-md-block"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;&nbsp;Delete</span>
+                  </button>
+                </form>  
+                @endif
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8 p-0">
+                <audio class="w-100" controls controlsList="nodownload no">
+                  <source src="{{$song->previewUrl}}" type="audio/mp4">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+                
+              <div class="col-2 d-md-none">
+                @if ($song->kid_id == $kid)
+                <form class="p-0 m-0" action="{{url('songs', [$song->id])}}" method="POST">
+                  <input type="hidden" name="_method" value="DELETE">
+                  {{ csrf_field() }}
+                  <button type="submit" class="btn btn-block text-danger px-0 py-3 m-0">
+                    <span class="d-md-none"><i class="fas fa-trash-alt fa-lg"></i></span>
+                  </button>
+                </form>  
+                @endif
+              </div>
+              
               @foreach ($song->votes as $vote)
                 @if ($vote->kid_id == $kid)
                 @php $voted = 'text-success'; @endphp
                 @endif
               @endforeach
-              <div class="col-2 p-0">
+              <div class="col-2 col-md-4">
                 <form class="p-0 m-0" action="{{url('songs', [$song->id])}}" method="POST">
                   <input type="hidden" name="_method" value="PUT">
                   {{ csrf_field() }}
-                <button type="submit" class="btn btn-block text-default px-0 py-3 m-0 {{$voted}}">
+                  <button type="submit" class="btn btn-block text-default px-0 py-3 m-0 {{$voted}}">
                     <span class="d-md-none"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;{{count($song->votes)}}</span>
-                    <span class="d-none d-md-block"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;{{count($song->votes)}} votes</span>
+                    <span class="d-none d-md-block"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;Vote ({{count($song->votes)}})</span>
                   </button>
                 </form>
               </div>
-              <div class="col-1 p-0">
-              @if ($song->kid_id == $kid)
-              <form class="p-0 m-0" action="{{url('songs', [$song->id])}}" method="POST">
-                  <input type="hidden" name="_method" value="DELETE">
-                  {{ csrf_field() }}
-                  <button type="submit" class="btn btn-block text-danger px-0 py-3 m-0">
-                    <span class=""><i class="fas fa-trash-alt fa-lg"></i></span>
-                  </button>
-                </form>  
-                {{-- <a href="#song{{$song->id}}" style="-pointer-events: none;" class="btn btn-block text-danger px-0 py-3 m-0">
-                    <span class="d-md-block"><i class="fas fa-trash fa-lg"></i>&nbsp;&nbsp;</span>
-                  </a> --}}
-                  @endif
-                </div>
-              </div>
-            <div class="card-footer bg-white text-center py-0 hidden">
-              <div class="row">
-              </div>
+                
             </div>
           </div>
         </div>
-        @endforeach
       </div>
-      {{-- <p class="text-dark">You can add <strong>five</strong> tracks to the playlist.</p> --}}
+      @endforeach
       @php if ($mysongcount[0]['songs_count'] == 1) {$addedtracks = 'track';} else {$addedtracks = 'tracks';} @endphp
       @php if ($mysongcount[0]['songs_count'] == 4) {$moretracks = 'track';} else {$moretracks = 'tracks';} @endphp
+      
       @if ($mysongcount[0]['songs_count'] >= 5)
       <p class="text-danger"><strong>You have added {{$mysongcount[0]['songs_count']}} {{$addedtracks}} to the playlist.</strong></p>
       <p class="text-dark">You have <strong>unlimited</strong> votes (one per track).</p>
@@ -153,8 +167,7 @@
       @endif
     </div>
   </main>
-  </div>
-
-  @endsection
+</div>
+@endsection
   
   

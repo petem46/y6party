@@ -102,7 +102,9 @@ class SongsController extends Controller
         'songname' => $request->songname,
         'kid_id' => $request->kid_id,
         'artist_track' => strtoupper($request->artist) . "_" .  strtoupper($request->songname),
-        ]);          
+        'previewUrl' => $request->previewUrl,
+        'artworkUrl' => $request->artworkUrl,
+        ]);
       } 
       catch(\Illuminate\Database\QueryException $e) 
       {

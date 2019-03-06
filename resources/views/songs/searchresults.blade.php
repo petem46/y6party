@@ -81,9 +81,7 @@
           <button type="button" onclick="goBack()" class="col-6 btn btn-danger text-left">
             <i class="fas fa-search"></i>&nbsp;&nbsp;Search again    
           </button>    
-          <button type="button" onclick="{{route('playlist')}}" class="col-6 btn btn-info text-right">
-              <i class="fas fa-music"></i>&nbsp;&nbsp;The Playlist    
-          </button>    
+          <a href="{{route('playlist')}}" class="col-6 btn btn-info text-right"><i class="fas fa-music"></i>&nbsp;&nbsp;The Playlist</a>
         </div>
   </div>
 </section>

@@ -22,8 +22,8 @@ $endtime = date('g:i A', strtotime($settings['endtime']));
         <a class="btn btn-raised btn-info btn-lg font-weight-bold" href="{{ route('login') }}" role="button">Login Here</a>
         {{-- <a class="btn btn-outline-light btn-lg font-weight-bold" href="{{ route('login') }}" role="button">Parent Login</a> --}}
         @else
-        <h2>Welcome</h2>
-        <h4>{{Auth::user()->name}}</h4>
+        {{-- <h2>Welcome</h2> --}}
+        {{-- <h4>{{Auth::user()->name}}</h4> --}}
         @endguest
       </div>
     </div>

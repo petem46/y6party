@@ -15,7 +15,7 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
+Route::domain('demo.y6party.com')->group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
     Route::resource('settings', 'SettingsController');    
     Route::get('/iamjob', 'JobsController@index')->name('iamjob'); 
@@ -26,7 +26,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::resource('comments', 'CommentsController');    
 });
 
-Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function()
+Route::domain('demo.y6party.com')->group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function()
 {
     Route::get('/iamjob', 'JobsController@index')->name('iamjob'); 
     Route::get('/addjob', 'JobsController@create')->name('addjob');
@@ -40,7 +40,7 @@ Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function(
 
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::domain('demo.y6party.com')->group(['middleware' => 'auth'], function () {
 
     Route::get('auth/register', 'Auth\AuthController@getRegister');
     Route::post('auth/register', 'Auth\AuthController@postRegister');

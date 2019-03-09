@@ -10,11 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::group(['domain' => 'demo.y6party.com'], function () {
-    
-
-
 // Authentication Routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -72,4 +67,4 @@ Route::get('/home', function () {
 })->name('home');
 Auth::routes();
     
-});
+    

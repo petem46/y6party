@@ -113,7 +113,7 @@ $datatoggle = 0;
                   </div>
                 </div>
                 <div class="pt-3 ml-5 mr-3">
-                  <button type="submit" class="btn btn-success btn-outline d-none d-md-block"><i class="fas fa-save"></i>&nbsp;&nbsp;Save Choice</button>
+                  <button type="submit" class="btn btn-success btn-outline d-none d-md-block"><i class="fas fa-save"></i>&nbsp;&nbsp;Save Name</button>
                   <button type="submit" class="btn btn-success d-md-none py-0 "><i class="far fa-save fa-3x"></i></button>
                 </div>
               </div>
@@ -138,7 +138,7 @@ $datatoggle = 0;
                   </div>
                 </div>
                 <div class="pt-3 ml-5 mr-3">
-                  <button type="submit" class="btn btn-success btn-outline d-none d-md-block"><i class="fas fa-save"></i>&nbsp;&nbsp;Save Choice</button>
+                  <button type="submit" class="btn btn-success btn-outline d-none d-md-block"><i class="fas fa-save"></i>&nbsp;&nbsp;Save Size</button>
                   <button type="submit" class="btn btn-success d-md-none py-0 "><i class="far fa-save fa-3x"></i></button>
                 </div>
               </form>

@@ -40,6 +40,7 @@ Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function(
 
 });
 
+Route::group(['middleware' => 'auth'], function () {
 
     Route::get('auth/register', 'Auth\AuthController@getRegister');
     Route::post('auth/register', 'Auth\AuthController@postRegister');
@@ -54,14 +55,8 @@ Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function(
     Route::get('/songs/search/{search}', 'SongsController@songsearch');
     
     Route::resource('songs', 'SongsController');
-    Route::resource('settings', 'SettingsController');    
-    Route::get('/iamjob', 'JobsController@index')->name('iamjob'); 
-    Route::get('/addjob', 'JobsController@create')->name('addjob');
-    Route::post('/jobs/{job}/comments', 'CommentsController@store');
-    Route::resource('jobs', 'JobsController');    
-    Route::post('/jobs/{job}/updatejob', 'JobsController@updatejob');
-    Route::resource('comments', 'CommentsController');    
 
+});
     
 // Home Routes
 Route::get('/', function () {

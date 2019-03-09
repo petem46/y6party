@@ -173,8 +173,8 @@ class SongsController extends Controller
             DB::table('votes')
             ->where([
                 ['song_id', $id],
-                ['kid_id', $kid->id],
-                ['songkid', $id . '-' . $kid->id],
+                ['kid_id', $kid],
+                ['songkid', $id . '-' . $kid],
             ])
             ->delete();
            

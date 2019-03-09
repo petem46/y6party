@@ -16,9 +16,23 @@ class ProfileController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request)
+    public function updateHoodieName(Request $request, $kid)
     {
-        // $request->user() returns an instance of the authenticated user...
+        $kid = Kid::find($kid);
+        $kid->hoodiename = $request->get('hoodieName');
+        $kid->save();
+        // return view('profile');
+        return redirect('/profile#' . $kid->id)
+        ->with('messageHoodieUpdated', 'Hoodie Name has been updated to: ' . $request->hoodieName . '.');
+    }
+    public function updateHoodieSize(Request $request, $kid)
+    {
+        $kid = Kid::find($kid);
+        $kid->hoodiesize = $request->get('hoodieSize');
+        $kid->save();
+        // return view('profile');
+        return redirect('/profile#' . $kid->id)
+        ->with('messageHoodieUpdated', 'Hoodie Size has been updated to: ' . strtoupper($request->hoodieSize) . '.');
     }
 
     public function show()

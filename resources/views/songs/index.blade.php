@@ -100,12 +100,12 @@
                 <div class="text-muted"><small>Added by {{$song->kid->kidname}} - {{ $song->created_at->diffForHumans() }}</small></div>
                 <div><h6>{{$i}}. {{$song->artist}} - {{$song->songname}}</h6></div>
               </div>
-              <div class="col-1 col-md-4">
+              <div class="col-2 offset-md-2 d-none d-md-block">
                 @if ($song->kid_id == $kid)
                 <form class="p-0 m-0" action="{{url('songs', [$song->id])}}" method="POST">
                   <input type="hidden" name="_method" value="DELETE">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-block text-danger px-0 py-3 m-0">
+                  <button type="submit" class="btn btn-block btn-danger px-0 py-3 m-0">
                     <span class="d-none d-md-block"><i class="fas fa-trash-alt fa-lg"></i>&nbsp;&nbsp;Delete</span>
                   </button>
                 </form>  
@@ -137,13 +137,21 @@
                 @php $voted = 'text-success'; @endphp
                 @endif
               @endforeach
-              <div class="col-2 col-md-4">
+              <div class="col-2 offset-md-2 d-md-none px-0">
                 <form class="p-0 m-0" action="{{url('songs', [$song->id])}}" method="POST">
                   <input type="hidden" name="_method" value="PUT">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-block text-default px-0 py-3 m-0 {{$voted}}">
-                    <span class="d-md-none"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;{{count($song->votes)}}</span>
-                    <span class="d-none d-md-block"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;Vote ({{count($song->votes)}})</span>
+                    <span class=""><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;{{count($song->votes)}}</span>
+                  </button>
+                </form>
+              </div>
+              <div class="col-2 offset-md-2 d-none d-md-block">
+                <form class="p-0 m-0" action="{{url('songs', [$song->id])}}" method="POST">
+                  <input type="hidden" name="_method" value="PUT">
+                  {{ csrf_field() }}
+                  <button type="submit" class="btn btn-block btn-default px-0 py-3 m-0 {{$voted}}">
+                    <span class=""><i class="fas fa-thumbs-up fa-lg"></i>&nbsp;&nbsp;Vote ({{count($song->votes)}})</span>
                   </button>
                 </form>
               </div>

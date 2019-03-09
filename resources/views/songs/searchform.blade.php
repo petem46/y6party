@@ -26,11 +26,11 @@
       {{ csrf_field() }}
       <div class="form-group">
         <label for="song-artist">Artist</label>
-        <input type="text" name="artist" id="song-artist" class="form-control" placeholder="Enter Artist or Band name">
+        <input type="search" name="artist" id="song-artist" class="form-control" placeholder="Enter Artist or Band name">
       </div>
       <div class="form-group">
         <label for="song-track">Track</label>
-        <input type="text" name="track" id="song-track" class="form-control" placeholder="Enter Track name">
+        <input type="search" name="track" id="song-track" class="form-control" placeholder="Enter Track name">
       </div>
       <div class="form-group mt-4 ms-0">
         <div class="row mx-0">

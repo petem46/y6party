@@ -20,13 +20,6 @@
                   <div class=""><h5>{{$job->name}}</h5></div>
                   </a>
                 </div>
-                <div class="col-4 hidden">
-                  <a href="#job{{$job->id}}" class="btn btn-block text-default px-0 py-3 m-0" data-toggle="collapse">
-                    {{-- <a href="{{url("/jobs/{$job->id}")}}" class="btn btn-block text-default px-0 py-3 m-0"> --}}
-                    <span class="d-md-none"><i class="fas fa-info"></i>&nbsp;&nbsp;</span>
-                    <span class="d-none d-md-block"><i class="fas fa-info"></i>&nbsp;&nbsp;Info</span>
-                  </a>
-                </div>
                 {{-- <a href="#job{{$job->id}}" class="btn btn-block text-center card-header-job_plus m-auto" data-toggle="collapse"><i class="fas fa-plus"></i></a> --}}
               </div>
               <div id="job{{$job->id}}" class="card-body collapse <?php if($datatoggle === $job->id) {echo "show";} ?>">
@@ -159,8 +152,11 @@
                   </div>
                 </div>
               </div>
+              <div class="card-footer bg-light text-center py-0">
+                <div class="text-dark float-right"><small>Last Updated: {{ $job->updated_at->diffForHumans() }}</small></div>
+              </div>           
             </div>
           </div>
           @endforeach
         </div>
-      <a href="{{URL::to('/')}}/jobs/create" class="btn btn-success float-right"><i class="fas fa-plus"></i> New Job</a>
+      <a href="{{URL::to('/')}}/jobs/create" class="btn btn-success btn-outline float-right mr-3"><i class="fas fa-plus"></i> New Job</a>

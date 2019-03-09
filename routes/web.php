@@ -46,6 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('auth/register', 'Auth\AuthController@postRegister');
     
     Route::get('/profile', 'ProfileController@show')->name('profile'); 
+    Route::post('/profile/updateHoodieName/{kid}', 'ProfileController@updateHoodieName'); 
+    Route::post('/profile/updateHoodieSize/{kid}', 'ProfileController@updateHoodieSize'); 
     Route::get('/playlist', 'SongsController@index')->name('playlist'); 
     Route::get('/party', 'HomeController@index')->name('party');
     Route::post('/songsearch', 'SongsController@songsearch')->name('songsearch');

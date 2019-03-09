@@ -84,13 +84,16 @@ $datatoggle = 0;
         </div>
       </div>
       @if (Auth::user()->usergroup_id < 3)
+      @php $childcount = 0 @endphp
+      @foreach ($user as $kid)
+      @php $childcount++ @endphp
       <div class="row">
         <div class="col-lg-12 mb-3">
+          
           <div class="card card-default">
             <div class="card-header bg-light py-3">
-              <h3>Linked Children ({{count($user)}})</h3>
+              <h3>Linked Child ({{$childcount}} of {{count($user)}})</h3>
             </div>
-            @foreach ($user as $kid)
             <div class="card-header card-header-job" id="{{ $kid->id }}">
               <div class="flex-1 capitalize">
                 <div class="text-info text-uppercase"><small>Name</small></div>
@@ -98,6 +101,7 @@ $datatoggle = 0;
               </div>
             </div>
           </div>
+
           <div class="card card-default">
             <div class="card-header card-header-job">
               <div class="flex-1 capitalize">
@@ -115,6 +119,7 @@ $datatoggle = 0;
               </div>
             </form>
           </div>
+
           <div class="card card-default">
             <div class="card-header card-header-job">
               <div class="flex-1 capitalize">
@@ -136,9 +141,10 @@ $datatoggle = 0;
                   <button type="submit" class="btn btn-success btn-outline d-none d-md-block">Save Choice</button>
                   <button type="submit" class="btn btn-success d-md-none py-0 "><i class="far fa-save fa-3x"></i></button>
                 </div>
+              </form>
               </div>
-            </form>
           </div>
+
           <div class="card card-default">
             <div class="card-body">
               <div class="card-text">
@@ -157,10 +163,10 @@ $datatoggle = 0;
               @endforeach
             </div>
           </div>
-          @endforeach
+          
         </div>
       </div>
-    </div>
+    @endforeach
     <div class="row">
       <div class="col-lg-12 mb-3">
         <div class="card card-default">

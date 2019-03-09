@@ -26,7 +26,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
         Route::resource('jobs', 'JobsController');    
         Route::post('/jobs/{job}/updatejob', 'JobsController@updatejob');
         Route::resource('comments', 'CommentsController');  
-    }  
+    });  
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function()
@@ -42,7 +42,7 @@ Route::group(['middleware' => 'App\Http\Middleware\ParentMiddleware'], function(
         Route::get('/profile', 'ProfileController@show')->name('profile'); 
         Route::get('/playlist', 'SongsController@index')->name('playlist'); 
         Route::get('/party', 'HomeController@index')->name('party');
-    }
+    });  
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/songs/search/{search}', 'SongsController@songsearch');
         
         Route::resource('songs', 'SongsController');
-    }
+    });  
 });
     
 // Home Routes

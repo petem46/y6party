@@ -159,4 +159,4 @@
           </div>
           @endforeach
         </div>
-      <a href="{{URL::to('/')}}/jobs/create" class="btn btn-success btn-outline float-right mr-3"><i class="fas fa-plus"></i> New Job</a>
+      <a href="{{URL::to('/')}}/jobs/create" class="btn btn-success btn-outline float-right mr-3 col-5 col-md-4"><i class="fas fa-plus"></i> Add A Job</a>

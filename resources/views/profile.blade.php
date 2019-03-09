@@ -177,6 +177,7 @@ $datatoggle = 0;
       </div>
     </div>
     @include('jobs.board')
+    <button class="btn btn-outline btn-info float-left ml-3 col-5 col-md-4"><i class="fas fa-search"></i>&nbsp;&nbsp;Find A Job</button>
     
     {{-- TEST SHOW ALL JOB DETAILS WITH COMMENTS AND HELPERS --}}
     

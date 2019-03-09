@@ -101,12 +101,12 @@ $datatoggle = 0;
           <div class="card card-default">
             <div class="card-header card-header-job">
               <div class="flex-1 capitalize">
-              <form action="{{action('ProfileController@updateHoodieName', $kid->id)}}" method="POST" id="hoodieName" class="p-0 m-0">
-                {{ csrf_field() }}
+                <form action="{{action('ProfileController@updateHoodieName', $kid->id)}}" method="POST" id="hoodieName" class="p-0 m-0">
+                  {{ csrf_field() }}
                   <div class="text-info text-uppercase"><small>Hoodie Name</small></div>
                   <div class="p-0">
-                      <input type="text" name="hoodieName" id="profile-hoodieName" class="form-control" placeholder="Hoodie Name" value="{{$kid->hoodiename}}">
-                    </div>
+                    <input type="text" name="hoodieName" id="profile-hoodieName" class="form-control" placeholder="Hoodie Name" value="{{$kid->hoodiename}}">
+                  </div>
                 </div>
                 <div class="pt-3 ml-5 mr-3">
                   <button type="submit" class="btn btn-success btn-outline d-none d-md-block">Save Choice</button>
@@ -118,24 +118,24 @@ $datatoggle = 0;
           <div class="card card-default">
             <div class="card-header card-header-job">
               <div class="flex-1 capitalize">
-              <form action="{{action('ProfileController@updateHoodieSize', $kid->id)}}" method="POST" id="hoodieSize" class="p-0 m-0">
-                {{ csrf_field() }}
+                <form action="{{action('ProfileController@updateHoodieSize', $kid->id)}}" method="POST" id="hoodieSize" class="p-0 m-0">
+                  {{ csrf_field() }}
                   <div class="text-info text-uppercase"><small>Hoodie Size</small></div>
                   <div class="p-0">
-                      {{-- <input type="search" name="hoodieSize" id="profile-hoodieSize" class="form-control" placeholder="Hoodie Size" value="{{$kid->hoodiesize}}"> --}}
-                      <select class="form-control" name="hoodieSize" id="profile-hoodieSize" selected="LARGE">
-                          <option value="xsmall" @if ($kid->hoodiesize == "xsmall") selected="selected" @endif>EXTRA SMALL</option>
-                          <option value="small" @if ($kid->hoodiesize == "small") selected="selected" @endif>SMALL</option>
-                          <option value="medium" @if ($kid->hoodiesize == "medium") selected="selected" @endif>MEDIUM</option>
-                          <option value="large" @if ($kid->hoodiesize == "large") selected="selected" @endif>LARGE</option>
-                          <option value="xlarge" @if ($kid->hoodiesize == "xlarge") selected="selected" @endif>EXTRA LARGE</option>
-                        </select>
-                    </div>
+                    {{-- <input type="search" name="hoodieSize" id="profile-hoodieSize" class="form-control" placeholder="Hoodie Size" value="{{$kid->hoodiesize}}"> --}}
+                    <select class="form-control" name="hoodieSize" id="profile-hoodieSize" selected="LARGE">
+                      <option value="xsmall" @if ($kid->hoodiesize == "xsmall") selected="selected" @endif>EXTRA SMALL</option>
+                      <option value="small" @if ($kid->hoodiesize == "small") selected="selected" @endif>SMALL</option>
+                      <option value="medium" @if ($kid->hoodiesize == "medium") selected="selected" @endif>MEDIUM</option>
+                      <option value="large" @if ($kid->hoodiesize == "large") selected="selected" @endif>LARGE</option>
+                      <option value="xlarge" @if ($kid->hoodiesize == "xlarge") selected="selected" @endif>EXTRA LARGE</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="pt-3 ml-5 mr-3">
-                    <button type="submit" class="btn btn-success btn-outline d-none d-md-block">Save Choice</button>
-                    <button type="submit" class="btn btn-success d-md-none py-0 "><i class="far fa-save fa-3x"></i></button>
-                  </div>
+                  <button type="submit" class="btn btn-success btn-outline d-none d-md-block">Save Choice</button>
+                  <button type="submit" class="btn btn-success d-md-none py-0 "><i class="far fa-save fa-3x"></i></button>
+                </div>
               </div>
             </form>
           </div>
@@ -178,17 +178,17 @@ $datatoggle = 0;
     @if (Auth::user()->usergroup_id == 3)
     
     <div class="row">
-      @php $i = 0; @endphp
-      @foreach ($songs as $song)
-      @php
-      $i++;
-      $voted = 0;
-      @endphp
       <div class="col-lg-12 mb-3">
         <div class="card card-default">
           <div class="card-header bg-light py-3">
             <h3>My Tracks</h3>
           </div>
+          @php $i = 0; @endphp
+          @foreach ($songs as $song)
+          @php
+          $i++;
+          $voted = 0;
+          @endphp
           
           <div class="card-header card-header-job">
             <div class="flex-1">

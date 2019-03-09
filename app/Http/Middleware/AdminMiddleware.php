@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Auth;
 use Closure;
+use App\User;
 
 class AdminMiddleware
 {
@@ -15,11 +16,14 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->usergroup_id != 1)
+        if (null !== Auth::id())
         {
-        // return new Response(view('unauthorized')->with('role', 'Pete'));
-        return redirect(route('home'));
+            $user = User::where('id', Auth::id())->first();
+            if ($user->usergroup_id == 1)
+            {
+                return $next($request);
+            }
         }
-        return $next($request);
+        return redirect(route('home'));
     }
 }

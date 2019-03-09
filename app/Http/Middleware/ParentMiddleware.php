@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Auth;
 use Closure;
+use App\User;
 
 class ParentMiddleware
 {
@@ -15,11 +16,15 @@ class ParentMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->usergroup_id == 3)
+        $usergroups = array(1,2);
+        if (null !== Auth::id())
         {
-        // return new Response(view('unauthorized')->with('role', 'Pete'));
-        return redirect(route('home'));
+            $user = User::where('id', Auth::id())->first();
+            if (in_array($user->usergroup_id, $usergroups))
+            {
+                return $next($request);
+            }
         }
-        return $next($request);
+        return redirect(route('home'));
     }
 }

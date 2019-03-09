@@ -17,9 +17,9 @@ class JobsController extends Controller
 
     public function index()
     {
-        if (Auth::user()->usergroup_id == 3) {
-            return redirect('home');
-        }
+        // if (isset(Auth::user()->usergroup_id) && Auth::user()->usergroup_id == 3) {
+        //     return redirect('home');
+        // }
         $data = [
             'jobs' => Job::with('users')
                             ->with('jobtype')

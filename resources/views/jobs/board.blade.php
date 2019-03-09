@@ -134,11 +134,11 @@
                         <span class="d-none d-md-block"><i class="fas fa-user-check"></i>&nbsp;&nbsp;Signed Up</span>
                       </button>
                     </form>
-                    {{-- @elseif ($job->users_required - count($job->users) == 0) 
+                    @elseif ($job->users_required - count($job->users) == 0) 
                     <button disabled="disabled" style="pointer-events: none;" class="btn btn-block text-default px-0 py-3 m-0">
                       <span class="d-md-none"><i class="fas fa-user-check"></i></span>
                       <span class="d-none d-md-block"><i class="fas fa-user-check"></i>&nbsp;&nbsp;Job Full</span>
-                    </button> --}}
+                    </button>
                     @else 
                     <form class="p-0 m-0" action="{{url('jobs', [$job->id])}}" method="POST">
                       <input type="hidden" name="_method" value="PUT">

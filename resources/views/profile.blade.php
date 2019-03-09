@@ -113,7 +113,7 @@ $datatoggle = 0;
                   </div>
                 </div>
                 <div class="pt-3 ml-5 mr-3">
-                  <button type="submit" class="btn btn-success btn-outline d-none d-md-block">Save Choice</button>
+                  <button type="submit" class="btn btn-success btn-outline d-none d-md-block"><i class="fas fa-save"></i>&nbsp;&nbsp;Save Choice</button>
                   <button type="submit" class="btn btn-success d-md-none py-0 "><i class="far fa-save fa-3x"></i></button>
                 </div>
               </div>
@@ -138,7 +138,7 @@ $datatoggle = 0;
                   </div>
                 </div>
                 <div class="pt-3 ml-5 mr-3">
-                  <button type="submit" class="btn btn-success btn-outline d-none d-md-block">Save Choice</button>
+                  <button type="submit" class="btn btn-success btn-outline d-none d-md-block"><i class="fas fa-save"></i>&nbsp;&nbsp;Save Choice</button>
                   <button type="submit" class="btn btn-success d-md-none py-0 "><i class="far fa-save fa-3x"></i></button>
                 </div>
               </form>
@@ -177,7 +177,7 @@ $datatoggle = 0;
       </div>
     </div>
     @include('jobs.board')
-    <button class="btn btn-outline btn-info float-left ml-3 col-5 col-md-4"><i class="fas fa-search"></i>&nbsp;&nbsp;Find A Job</button>
+    <a href="{{route('iamjob')}}" class="btn btn-outline text-info float-left ml-3 col-5 col-md-4"><i class="fas fa-search"></i>&nbsp;&nbsp;Find A Job</a>
     
     {{-- TEST SHOW ALL JOB DETAILS WITH COMMENTS AND HELPERS --}}
     

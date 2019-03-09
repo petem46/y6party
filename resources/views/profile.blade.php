@@ -243,7 +243,7 @@ $datatoggle = 0;
     <p class="text-dark">You have added {{0 + $mysongcount[0]['songs_count']}} {{$addedtracks}} to the playlist.</p>
     <p class="text-info"><strong>You can add {{5 - $mysongcount[0]['songs_count']}} more {{$moretracks}} to the playlist.</strong></p>
     <p class="text-dark">You have <strong>unlimited</strong> votes (one per track).</p>
-    <p><a href="{{URL::to('/')}}/songs/create" class="btn btn-success btn-outline"><i class="fas fa-plus"></i> Add Song</a></p>
+    <p><a href="{{URL::to('/')}}/songs/search" class="btn btn-success btn-outline"><i class="fas fa-plus"></i> Add Song</a></p>
     @endif
     @endif
   </main>

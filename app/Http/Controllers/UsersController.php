@@ -15,7 +15,7 @@
         {
             $status = 401;
             $response = ['error' => 'Unauthorised'];
-            
+            dd("EGGS");
             $credentials = [
                 'email' => request('email'), 
                 'password' => request('password')

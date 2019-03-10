@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Controllers\Auth\Request;
+
 
 class LoginController extends Controller
 {
@@ -36,4 +40,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    function authenticated()
+    {
+        $user = User::where('id', Auth::id());
+        $user->update([
+            'last_login_at' => now(),
+            // 'last_login_ip' => $request->getClientIp()
+        ]);
+    }
+
 }

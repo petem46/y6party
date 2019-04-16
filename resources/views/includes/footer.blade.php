@@ -4,7 +4,7 @@
         Pete - 2018 &nbsp;&nbsp;
         @guest
         @else
-        <a href="https://github.com/petem46/y6party" target="_blank"><i class="fas fa-code-branch fa-lg"></i>&nbsp;y6party.com</a>
+        {{-- <a href="https://github.com/petem46/y6party" target="_blank"><i class="fas fa-code-branch fa-lg"></i>&nbsp;y6party.com</a> --}}
         @endguest
     </div>
 </section>
